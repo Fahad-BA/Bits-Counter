@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<title> Twitch Bits Counter.</title>
+		<meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="shortcut icon" href="/bits.ico" type="image/x-icon">
+        <link rel="icon" href="/bits.ico" type="image/x-icon">
+
+		<style>
+
+body {
+    background-color: white;
+    text-shadow:2px 1px 15px white;
+    color: black;
+    margin: auto;
+    margin-top: -100px;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+}
+
+a{ color:black; }
+
+</style>
+	</head>
+	<body><div class="content"><b>
+	    <center>
+			<div class="container">
+		    <img src="https://fhidan.com/img/twtch2.png"><br><br>
+		    <h2>Twitch Bits Counter.</h2><br>
+				<b>Enter how many bits do you wish to send.</b><br>
+		    <form method="post" action="bits.php">
+		        <input name="total" type="text" class="form-control" style="width: 150px; display: inline" placeholder="How many bits?"/>
+<select name="bits" class="form-control" style="width: 150px; display: inline">
+							<option value="Cheer1">Cheer</option>
+							<option value="PogChamp1">PogChamp</option>
+							<option value="ShowLove1">ShowLove</option>
+							<option value="FrankerZ1">FrankerZ</option>
+							<option value="VoHiYo1">VoHiYo</option>
+							<option value="Party1">Party</option>
+							<option value="SeemsGood1">SeemsGood</option>
+							<option value="Kreygasm1">Kreygasm</option>
+</select>
+
+<input name="submit" type="submit" value="Submit" class="btn btn-primary" />
+		    </form>
+		</div>
+
+		<script>
+		function myFunction() {
+		var copyText = document.getElementById("cheers");
+		copyText.select();
+		copyText.setSelectionRange(0, 499)
+		document.execCommand("copy");
+		alert("Copied :)");
+		}
+		</script>
+
+<?php
+            if(isset($_POST['submit']))
+				{
+				if(is_numeric($_POST['total']) && $_POST['total'] <= 500)
+					{
+						echo "<b>here is your ".$_POST['total']." bit/s.</b><input class=\"form-control\" style=\"width: 30%; \" id=\"cheers\" type=\"textarea\" value=\"";
+						for ($i=1; $i<=$_POST['total']; $i++)
+						{ echo $_POST['bits']." "; }
+						echo "\"<br>";
+						echo " <button onclick=\"myFunction()\" class=\"btn btn-primary\" >Copy!</button>";
+		} else if($_POST['total'] > 500) { echo "<b>You've Reached Character Limit of 500.</b>"; }
+		else { echo '<font color="red"><b>Enter how many bits do you wanna send.</font></b><br>'; }
+	    			}
+		?>
+		<footer><br>i made this for fun, follow me on twitter <a href=https://twitter.com/Dopesist>@Dopesist</a> :)
+
+<br><br><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="Dopesist" data-color="#FFFFFF" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee!" data-outline-color="#000" data-font-color="#000" data-coffee-color="#fd0" ></script></footer>
+        </b></div>
+	</body>
+</html>
